@@ -4,6 +4,7 @@ import numpy as np
 import numpy.random as ran
 
 def get_value_from_distribution(params):
+
     params_distribution = params["distribution"]
     result = 0
     if params_distribution == "normal":
@@ -28,8 +29,7 @@ def get_value_from_distribution(params):
     elif params_distribution == "choice":
         result = ran.choice(params["selection"], p=params["p"])
 
-
     else:
-        print "error: unknown distribution."
-        exit(1)
+        raise RuntimeError('error: unknown distribution.')
+
     return result
